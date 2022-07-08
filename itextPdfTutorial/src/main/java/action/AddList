@@ -1,0 +1,38 @@
+// Adding List in pdf
+
+package action;
+
+import java.io.FileNotFoundException;
+
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.List;
+
+public class AddList {
+     public static void main(String args[]) throws FileNotFoundException {
+    	 String file =  "F:\\pdf\\addList.pdf";
+    	 List list = new List();
+    	 list.add("java");
+    	 list.add("C");
+    	 list.add("Cpp");
+    	 list.add("Python");
+    	 
+    	 PdfWriter pdfWriter = new PdfWriter(file);
+    	 
+    	 PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+    	 
+    	 pdfDocument.addNewPage();
+    	 
+    	 Document document = new Document(pdfDocument);
+    	 
+    	 document.add(list);
+    	 
+    	 document.close();
+    	 
+    	 System.out.println("list created");
+    	 
+    	 
+    	 
+     }
+}
