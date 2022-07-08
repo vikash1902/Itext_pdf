@@ -1,0 +1,33 @@
+// Style in itext
+
+
+package action;
+
+import java.io.FileNotFoundException;
+
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.Style;
+import com.itextpdf.layout.element.Paragraph;
+
+public class StyleInPdf {
+      public static void main(String args[]) throws FileNotFoundException {
+    	  String file = "F:\\pdf\\StylrInPdf.pdf";
+    	  PdfWriter pdfWriter = new PdfWriter(file);
+    	  PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+    	  Document document = new Document(pdfDocument);
+    	  Style style = new Style();
+    	  style.setFontColor(Color.LIGHT_GRAY)
+    	  .setItalic()
+    	  .setFontSize(4f);
+          Paragraph paragraph = new Paragraph();
+          paragraph.add("Hello from Style").addStyle(style);
+          document.add(paragraph);
+          document.close();
+          System.out.println("Style executed ");
+    	 
+    	
+      }
+}
