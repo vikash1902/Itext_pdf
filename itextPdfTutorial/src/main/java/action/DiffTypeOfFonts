@@ -1,0 +1,48 @@
+// Diff type of fonts in itext
+
+package action;
+
+import java.io.IOException;
+
+import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvasConstants;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Text;
+
+public class DiffTypeOfFonts {
+	public static void main(String args[]) throws IOException {
+		String file = "F:\\pdf\\DiffTypeOfFonts.pdf";
+		PdfWriter pdfWriter = new PdfWriter(file);
+		PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+		Document document = new Document(pdfDocument);
+
+		PdfFont font = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
+
+		Text text1 = new Text("Normal").setFont(font);
+		Text text2 = new Text("\n Bold").setFont(font).setBold();
+		Text text3 = new Text("\n Italic").setFont(font).setItalic();
+		Text text4 = new Text("\n Underlined").setFont(font).setUnderline();
+		Text text5 = new Text("\n Bold-Italic").setFont(font).setBold().setItalic().setBackgroundColor(Color.MAGENTA);
+		Text text6 = new Text("\n Bold-Underlined").setFont(font).setBold().setUnderline();
+		Text text7 = new Text("\n Color").setFont(font).setFontColor(Color.BLUE);
+		Text text8 = new Text("\n Stroke").setFont(font).setBold().setStrokeColor(Color.GREEN);
+		Text text9 = new Text("\n Text Rendring").setFont(font)
+				.setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.STROKE).setStrokeColor(Color.PINK)
+				.setStrokeWidth(0.5f);
+
+		Paragraph paragraph = new Paragraph().add(text1).add(text2).add(text3).add(text4).add(text5).add(text6)
+				.add(text7).add(text8).add(text9);
+
+		document.add(paragraph);
+
+		document.close();
+
+		System.out.println("font executed");
+	}
+}
