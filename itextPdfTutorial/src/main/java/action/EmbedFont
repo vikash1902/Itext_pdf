@@ -1,0 +1,52 @@
+// Embeding font from other directory or file
+
+package action;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Text;
+
+public class EmbadeFont {
+	public static final String abshow = "filelocation";
+	
+	public static final String rowshow = "filelocation";
+
+	private static boolean embedded;
+	
+	public static void main(String args[]) throws IOException {
+		
+		String file = "location of pdf file";
+		
+		PdfWriter pdfWriter = new PdfWriter(file);
+		
+		PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+		
+		Document document = new Document(pdfDocument);
+		
+		PdfFont abc1 = PdfFontFactory.createFont(abshow, embedded);
+		
+		PdfFont abc2 = PdfFontFactory.createFont(rowshow, embedded);
+		
+		Text text1 = new Text("You are Nice").setFont(abc1);
+		 
+		 Text text2 = new Text(" Person").setFont(abc2);
+		 
+		 Paragraph paragraph = new Paragraph()
+				 .add(text1)
+				 .add(text2);
+		 
+		 document.add(paragraph);
+		 
+		 document.close();
+		 
+		 System.out.println("font embedded");
+	}
+
+}
