@@ -23,6 +23,8 @@ public class AddParagraph {
 		
 		PdfDocument pdfDocument = new PdfDocument(pdfWriter);
 		
+		pdfDocument.addNewPage();
+		
 		Document document = new Document(pdfDocument);
 		
 		document.add(paragraph);
