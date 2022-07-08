@@ -1,0 +1,36 @@
+//Adding Paragraph in a pdf file
+
+package action;
+
+import java.io.FileNotFoundException;
+
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.AreaBreak;
+import com.itextpdf.layout.element.Paragraph;
+
+public class AddParagraph {
+	public static void main(String argd[]) throws FileNotFoundException {
+		
+		String file = "F:\\pdf\\paragraph.pdf";
+		
+		String paraText = "iText is a library for creating and manipulating PDF files in Java and .NET.";
+		
+		Paragraph paragraph = new Paragraph(paraText);
+		
+		PdfWriter pdfWriter = new PdfWriter(file);
+		
+		PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+		
+		Document document = new Document(pdfDocument);
+		
+		document.add(paragraph);
+		
+		document.close();
+		
+		System.out.println("paragraph added");
+		
+	}
+
+}
