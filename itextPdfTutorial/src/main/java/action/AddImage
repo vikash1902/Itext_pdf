@@ -1,0 +1,45 @@
+// Adding Image in pdf
+
+package action;
+
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
+
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Image;
+
+public class AddImage {
+
+	public static void main(String[] args) throws MalformedURLException, FileNotFoundException {
+		String file = "F:\\pdf\\addImage.pdf";
+    	
+    	String image_path = "F:\\itextPdf\\itextPdfTutorial\\image\\download.jpg";
+    	try {
+    	
+    	ImageData data = ImageDataFactory.create(image_path); // creating image data
+    	
+    	
+    	PdfWriter pdfwriter = new PdfWriter(file); 
+    	
+    	PdfDocument pdfDocument = new PdfDocument(pdfwriter);
+    	
+    	pdfDocument.addNewPage();
+    	Image image = new Image(data);// creating image object
+    	
+    	Document document = new Document(pdfDocument);
+    	
+    	document.add(image);
+    	
+    	document.close();
+    
+    }catch(Exception e) {
+    	e.printStackTrace();
+    }
+    	System.out.println("image added");
+ }
+	
+}
